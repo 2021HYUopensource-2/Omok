@@ -1,9 +1,3 @@
-from operator import eq
-def file_len(fname):
-    lines = 0
-    for line in open(fname):
-        lines += 1
-    return lines
 
 def login():
     while True:
@@ -15,24 +9,25 @@ def login():
         if user_input == 1:
             user_id = input("닉네임을 입력해주세요: \n")
             while True:
-                with open("id_data.txt", "r") as f, open("pw_data.txt", "r") as t:
-                    num_lines = file_len("id_data.txt")
-                    for i in range(num_lines):
-                        if (user_id == f.readline()):
-                            temp = i + 1
-                            user_password = input("비밀번호를 입력해주세요")
-                            num_lines = file_len("pw_data.txt")
-                            for i in range(num_lines):
-                                if(user_password == t.readline()):
-                                    print("로그인 성공")
-                                    return 0
-                                else:
-                                    print("비밀번호가 틀립니다.")
-                                    return 0
-                print("닉네임이 틀립니다.")
-                break
-            
-            
+                id_list = open("id_data.txt","r").read().split()
+                pw_list = open("pw_data.txt","r").read().split()
+                list_len = len(id_list)
+                cnt = 0
+                for i in range(list_len):
+                    if (user_id == id_list[i]):
+                        cnt = 1
+                        idx = i
+                if cnt == 1:
+                    user_password = input("비밀번호를 입력해주세요: \n")
+                    if (user_password == pw_list[idx]):
+                        print("로그인 성공")
+                        return 0
+                    else:
+                        print("비밀번호가 틀립니다")
+                elif cnt == 0:
+                    print("존재하지 않는 닉네임입니다 \n")
+                    login()
+                      
         elif user_input == 2 :
             new_id = input("새로운 닉네임을 입력해주세요: \n")
             id_list = open("id_data.txt","r").read().split('\n')
@@ -65,5 +60,6 @@ def login():
             print("잘못 입력하셨습니다.")
 
 login()
+
 
 
