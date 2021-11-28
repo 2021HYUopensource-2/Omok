@@ -1,5 +1,13 @@
 import re
 
+def function44():
+    if (row[y][x+1] == 'O' and row[y][x+2] == 'O' and row[y][x+3] == 'O') or (row[y][x+1] == 'O' and row[y][x+2] == 'O' and row[y][x-1] == 'O') or (row[y][x+1] == 'O' and row[y][x-1] == 'O' and row[y][x-2] == 'O') or (row[y][x-1] == 'O' and row[y][x-2] == 'O' and row[y][x-3] == 'O'):
+        if (row[y+1][x] == 'O' and row[y+2][x] == 'O' and row[y+3][x] == 'O') or (row[y+1][x] == 'O' and row[y+2][x] == 'O' and row[y-1][x] == 'O') or (row[y+1][x] == 'O' and row[y-1][x] == 'O' and row[y-2][x] == 'O') or (row[y-1][x] == 'O' and row[y-2][x] == 'O' and row[y-3][x] == 'O'):
+            return False
+    if (row[y+1][x] == 'O' and row[y+2][x] == 'O' and row[y+3][x] == 'O') or (row[y+1][x] == 'O' and row[y+2][x] == 'O' and row[y-1][x] == 'O') or (row[y+1][x] == 'O' and row[y-1][x] == 'O' and row[y-2][x] == 'O') or (row[y-1][x] == 'O' and row[y-2][x] == 'O' and row[y-3][x] == 'O'):
+        if (row[y][x + 1] == 'O' and row[y][x + 2] == 'O' and row[y][x + 3] == 'O') or (row[y][x + 1] == 'O' and row[y][x + 2] == 'O' and row[y][x - 1] == 'O') or (row[y][x + 1] == 'O' and row[y][x - 1] == 'O' and row[y][x - 2] == 'O') or (row[y][x - 1] == 'O' and row[y][x - 2] == 'O' and row[y][x - 3] == 'O'):
+            return False
+
 def function33(cell_type,vector_x,vector_y):
     idx = 1
     keep = cell_type
@@ -82,6 +90,10 @@ while cnt < MAX_LENGTH**2:
         while function33(PLAYER_2,1,0)+function33(PLAYER_2,0,1)+function33(PLAYER_2,1,1)+function33(PLAYER_2,1,-1) >= 2:
             x = int(input("33불가 x: "))
             y = int(input("33불가 y: "))
+    if is_player_1:
+        while function44() == False:
+            x = int(input("44불가 x: "))
+            y = int(input("44불가 y: "))
 
 
     if is_player_1:
