@@ -14,6 +14,23 @@ def login():
         user_input = int(input())
         if user_input == 1:
             user_id = input("닉네임을 입력해주세요: \n")
+            while True:
+                with open("id_data.txt", "r") as f, open("pw_data.txt", "r") as t:
+                    num_lines = file_len("id_data.txt")
+                    for i in range(num_lines):
+                        if (user_id == f.readline()):
+                            temp = i + 1
+                            user_password = input("비밀번호를 입력해주세요")
+                            num_lines = file_len("pw_data.txt")
+                            for i in range(num_lines):
+                                if(user_password == t.readline()):
+                                    print("로그인 성공")
+                                    return 0
+                                else:
+                                    print("비밀번호가 틀립니다.")
+                                    return 0
+                print("닉네임이 틀립니다.")
+                break
             
             
         elif user_input == 2 :
