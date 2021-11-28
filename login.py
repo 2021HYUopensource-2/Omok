@@ -12,10 +12,24 @@ def login():
               "회원가입: 2\n"
               "나가기: 3")
         user_input = int(input())
+        
         if user_input == 1:
             user_id = input("닉네임을 입력해주세요: \n")
-
-
+            while True:
+                with open("user_data.txt","r") as f:
+                    num_lines = file_len("user_data.txt")
+                    for i in range(num_lines):
+                        memo=f.readline().split()
+                        if(user_id==memo[0]):
+                            user_password=input("비밀번호를 입력해주세요")
+                            if(user_password==memo[1]):
+                                print("로그인 성공")
+                                return 0
+                            else:
+                                print("비밀번호가 틀립니다.")
+                                return 0
+                    print("닉네임이 틀립니다.")
+                    
 
         elif user_input == 2 :
             new_id = input("새로운 닉네임을 입력해주세요: \n")
@@ -51,4 +65,3 @@ def login():
             print("잘못 입력하셨습니다.")
 
 login()
-
