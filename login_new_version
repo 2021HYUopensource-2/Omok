@@ -6,6 +6,7 @@ class Login:
         t=open('member.csv','a',newline='')
         wr = csv.writer(t)
         wr.writerow(self.member)
+        print("회원가입 완료",end="")
         t.close()
 
     def check(self,check_id,what): #0은 중복 확인 /1은 아이디 정보 확인
@@ -20,17 +21,19 @@ class Login:
             return 0
                     
     def control(self):
-        print("환영합니다.")
+        print("환영합니다:)")
         while(1):
-            print("\n로그인: 1\n회원가입: 2\n나가기: 3")
+            print("---------------")
+            print("1.로그인\n2.회원가입\n3.나가기\n메뉴를 선택하세요: ",end="")
             user_input=int(input())
+            print("---------------")
             if user_input==1:
                 search_id=input("아이디를 입력해주세요: ")
                 c=self.check(search_id,1)
                 if(c!=0):
                     search_pw=input("비밀번호를 입력해주세요: ")
                     if(c==search_pw):
-                        print("로그인 성공")
+                        print("로그인 성공!\n게임을 시작합니다.")
                     else:
                         print("비밀번호가 틀립니다.")
                         continue
