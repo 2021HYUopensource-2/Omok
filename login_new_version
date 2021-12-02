@@ -51,7 +51,6 @@ class Login:
                 self.f_register()
             else:
                 return 0
-            print()
         
 login=Login()
 login.control()
