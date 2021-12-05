@@ -26,6 +26,5 @@ def user_input(): #입력받기
 def game(): #게임 시작
     login=Login()
     login_member=login.control()
-    print(login_member)
     player1=login_member[0]
     player2=login_member[1]
