@@ -7,6 +7,12 @@ def function44():
     if (row[y+1][x] == 'O' and row[y+2][x] == 'O' and row[y+3][x] == 'O') or (row[y+1][x] == 'O' and row[y+2][x] == 'O' and row[y-1][x] == 'O') or (row[y+1][x] == 'O' and row[y-1][x] == 'O' and row[y-2][x] == 'O') or (row[y-1][x] == 'O' and row[y-2][x] == 'O' and row[y-3][x] == 'O'):
         if (row[y][x + 1] == 'O' and row[y][x + 2] == 'O' and row[y][x + 3] == 'O') or (row[y][x + 1] == 'O' and row[y][x + 2] == 'O' and row[y][x - 1] == 'O') or (row[y][x + 1] == 'O' and row[y][x - 1] == 'O' and row[y][x - 2] == 'O') or (row[y][x - 1] == 'O' and row[y][x - 2] == 'O' and row[y][x - 3] == 'O'):
             return False
+    if (row[y+1][x+1] == 'O' and row[y+2][x+2] == 'O' and row[y+3][x+3] == 'O') or (row[y+1][x+1] == 'O' and row[y+2][x+2] == 'O' and row[y-1][x-1] == 'O') or (row[y+1][x+1] == 'O' and row[y-1][x-1] == 'O' and row[y-2][x-2] == 'O') or (row[y-1][x-1] == 'O' and row[y-2][x-2] == 'O' and row[y-3][x-3] == 'O'):
+        if (row[y+1][x-1] == 'O' and row[y+2][x-2] == 'O' and row[y+3][x-3] == 'O') or (row[y+1][x-1] == 'O' and row[y+2][x-2] == 'O' and row[y+1][x-1] == 'O') or (row[y+1][x+1] == 'O' and row[y-1][x+1] == 'O' and row[y-2][x+2] == 'O') or (row[y-1][x+1] == 'O' and row[y-2][x+2] == 'O' and row[y-3][x+3] == 'O'):
+            return False
+    if (row[y + 1][x - 1] == 'O' and row[y + 2][x - 2] == 'O' and row[y + 3][x - 3] == 'O') or (row[y + 1][x - 1] == 'O' and row[y + 2][x - 2] == 'O' and row[y + 1][x - 1] == 'O') or (row[y + 1][x + 1] == 'O' and row[y - 1][x + 1] == 'O' and row[y - 2][x + 2] == 'O') or (row[y - 1][x + 1] == 'O' and row[y - 2][x + 2] == 'O' and row[y - 3][x + 3] == 'O'):
+        if (row[y + 1][x + 1] == 'O' and row[y + 2][x + 2] == 'O' and row[y + 3][x + 3] == 'O') or (row[y + 1][x + 1] == 'O' and row[y + 2][x + 2] == 'O' and row[y - 1][x - 1] == 'O') or (row[y + 1][x + 1] == 'O' and row[y - 1][x - 1] == 'O' and row[y - 2][x - 2] == 'O') or (row[y - 1][x - 1] == 'O' and row[y - 2][x - 2] == 'O' and row[y - 3][x - 3] == 'O'):
+            return False
 
 def function33(cell_type,vector_x,vector_y):
     idx = 1
