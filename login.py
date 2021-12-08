@@ -24,7 +24,7 @@ class Login:
             else:
                 return cnt
         
-    def save_member(self,player1,player2):
+    def save_member(self,player1,player2): #player1, player2 정보 반환
         self.login_member.append(player1)
         self.login_member.append(player2)
         return self.login_member
@@ -35,6 +35,7 @@ class Login:
         while(1):
             print("---------------")
             print("1.로그인\n2.회원가입\n3.나가기\n메뉴를 선택하세요: ",end="")
+            ########################예외처리하기##########################
             user_input=int(input())
             print("---------------")
             if user_input==1:
@@ -47,7 +48,10 @@ class Login:
                         player1=c
                         print("player1 로그인 성공")
                         continue
-                elif (cnt==1 and search_id!=player1[0]) :
+                    else:
+                        print("비밀번호가 틀립니다.")
+                        continue
+                elif (c!=0 and cnt==1 and search_id!=player1[1] and search_id==c[1]) :
                     search_pw=input("비밀번호를 입력해주세요: ")
                     if c[2]==search_pw:
                         player2=c
