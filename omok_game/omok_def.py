@@ -1,4 +1,5 @@
 import re
+import csv
 
 board = [['-' for i in range(15)] for j in range(15)] #오목판 만들기
 def print_board(): 
@@ -15,7 +16,8 @@ def user_input(player): #입력받기
             y = int(input('y좌표 값을 입력해주세요: '))
             if y >= 0 and y < 15:
                 return check_input(player,x,y)
-        print("잘못된 값입니다.")
+        else:
+            print("잘못된 값입니다.")
 
 def check_input(player,x,y): #올바른 입력값인지 확인
      if board[y][x] =='-':
@@ -102,6 +104,23 @@ def functionV(player,vector_x,vector_y,x,y): #win?
     else:
         return 0
     
-def game_end(winer,loser): ###############파일 업데이트, 게임 마무리 ##################### winer[0]은 파일에서 멤버정보 있는 줄 인덱스임을 참고
-    print(winer[1]+": win")
-    print(loser[1]+": lose")
+def game_end(winner,loser): ###############파일 업데이트, 게임 마무리 ##################### winer[0]은 파일에서 멤버정보 있는 줄 인덱스임을 참고
+    print("Winner! : " + winner[1])
+    print("Lose : " + loser[1])
+    with open('member.csv','r') as t:
+        rdr = csv.reader(t)
+        ftemp = []
+        for line in rdr:
+            if(line[1] == winner[1]):
+                temp = int(line[3])
+                temp += 1
+                line[3] = str(temp)
+            elif(line[1] == loser[1]):
+                temp = int(line[4])
+                temp += 1
+                line[4] = str(temp)
+            ftemp.append(line)
+    
+    with open('member.csv','w',newline = '') as f:
+        wr = csv.writer(f)
+        wr.writerows(ftemp)
